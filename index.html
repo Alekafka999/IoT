@@ -1,391 +1,88 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Introdução à Internet das Coisas (IoT)</title>
-  <meta name="description" content="Página didática sobre Internet das Coisas (IoT): onde se hospeda, como funciona, linguagens e protocolos, características, ferramentas e notas importantes."/>
-  <style>
-    :root{
-      --bg:#0f1221;           /* fundo profundo e neutro */
-      --panel:#121633;        /* cards */
-      --panel-2:#0d102a;      /* destaque sutil */
-      --text:#eef2ff;         /* texto principal */
-      --muted:#b6c0ff;        /* texto auxiliar */
-      --brand:#6ea8fe;        /* cor de ênfase */
-      --accent:#8be9fd;       /* acento secundário */
-      --ok:#6ee7b7;           /* positivo */
-      --warn:#fbbf24;         /* atenção */
-      --danger:#f87171;       /* crítico */
-      --shadow:0 10px 30px rgba(0,0,0,.35);
-      --radius:18px;
-    }
-    html,body{height:100%;}
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      color:var(--text);
-      background: radial-gradient(1200px 800px at 10% -10%, #1a1f44 0%, #0f1221 60%, #0b0d1a 100%);
-      line-height:1.6;
-    }
-    /* Layout */
-    .wrapper{max-width:1100px;margin:0 auto;padding:24px;}
-    header{
-      padding:28px 0 8px;
-    }
-    .title{font-size: clamp(28px, 3.2vw, 42px); font-weight:800; letter-spacing:.2px; margin:0 0 6px;}
-    .subtitle{color:var(--muted); margin:0; font-size: clamp(14px, 1.6vw, 16px);}    
-
-    /* Nav */
-    .skip{position:absolute;left:-9999px;top:auto;}
-    nav{
-      position: sticky; top:0; z-index:20; backdrop-filter: blur(8px);
-      background: linear-gradient(180deg, rgba(13,16,42,.75), rgba(13,16,42,.45));
-      border-bottom: 1px solid rgba(255,255,255,.06);
-    }
-    .nav-inner{max-width:1100px;margin:0 auto;display:flex;gap:6px;align-items:center;padding:10px 24px;flex-wrap:wrap}
-    .nav-brand{display:flex;align-items:center;gap:10px;margin-right:8px}
-    .nav-brand svg{width:28px;height:28px}
-    .nav-brand strong{font-weight:800}
-    .nav a{
-      color:var(--text); text-decoration:none; font-size:14px; padding:8px 12px; border-radius:10px; opacity:.9
-    }
-    .nav a:hover{background:rgba(255,255,255,.06)}
-
-    /* Sections */
-    section{padding:28px 0}
-    .section-title{display:flex;align-items:center;gap:12px; margin:8px 0 16px}
-    .section-title svg{width:22px;height:22px; color:var(--accent)}
-    .panel{background:linear-gradient(180deg, var(--panel), var(--panel-2)); border:1px solid rgba(255,255,255,.07); border-radius:var(--radius); box-shadow:var(--shadow); padding:22px}
-    .grid{display:grid; gap:18px}
-    .grid.cols-2{grid-template-columns: repeat(2, minmax(0,1fr));}
-    .grid.cols-3{grid-template-columns: repeat(3, minmax(0,1fr));}
-    @media (max-width:960px){.grid.cols-3{grid-template-columns:1fr 1fr}}
-    @media (max-width:740px){.grid.cols-2,.grid.cols-3{grid-template-columns:1fr}}
-
-    /* Cards */
-    .card{background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.08); border-radius:14px; padding:16px}
-    .card h4{margin:0 0 8px; font-size:18px}
-    .card p{margin:0}
-    .badge{display:inline-flex; align-items:center; gap:6px; font-size:12px; padding:4px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.14); color:var(--muted);}
-    .badge.ok{border-color:rgba(110,231,183,.35); color:var(--ok)}
-    .badge.warn{border-color:rgba(251,191,36,.35); color:var(--warn)}
-
-    /* Table */
-    table{width:100%; border-collapse:separate; border-spacing:0; overflow:hidden; border-radius:14px;}
-    thead th{background:rgba(255,255,255,.08); text-align:left; padding:12px 14px; font-size:14px}
-    tbody td{border-top:1px solid rgba(255,255,255,.08); padding:12px 14px; vertical-align:top}
-
-    /* Lists */
-    ul.clean{list-style:none; padding:0; margin:0;}
-    ul.clean li{padding-left:0; margin:0 0 10px}
-    ul.check li::marker{content:""}
-    .check li{position:relative; padding-left:24px}
-    .check li:before{content:"✔"; position:absolute; left:0; top:2px; font-size:14px; color:var(--ok)}
-
-    .muted{color:var(--muted)}
-
-    /* Footer */
-    footer{padding:24px 0 48px; color:var(--muted); font-size:14px}
-    .footer-grid{display:grid; grid-template-columns:1fr; gap:10px}
-
-    /* Small helpers */
-    .callout{border-left:4px solid var(--brand); background:rgba(110,168,254,.08); padding:14px 16px; border-radius:12px}
-    .kpi{display:flex;gap:14px;flex-wrap:wrap}
-    .kpi .stat{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:10px 12px;font-size:13px}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoT - Internet das Coisas</title>
+    <link rel="stylesheet" href="css/stely2.css">
 </head>
 <body>
-  <a class="skip" href="#conteudo">Ir para o conteúdo</a>
 
-  <nav class="nav" aria-label="Navegação principal">
-    <div class="nav-inner">
-      <div class="nav-brand" aria-label="Marca">
-        <!-- Ícone simples em SVG -->
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/>
-          <path d="M12 3v18M3 12h18M6.5 6.5l11 11M17.5 6.5l-11 11" stroke="currentColor" stroke-width="1.2" opacity=".7"/>
-        </svg>
-        <strong>IoT – Guia Rápido</strong>
-      </div>
-      <div class="links" role="navigation">
-        <a href="#intro">Introdução</a>
-        <a href="#hospedagem">Onde se hospeda</a>
-        <a href="#funciona">Como funciona</a>
-        <a href="#linguagens">Linguagens & Protocolos</a>
-        <a href="#caracteristicas">Características</a>
-        <a href="#ferramentas">Ferramentas</a>
-        <a href="#notas">Boas práticas & Notas</a>
-      </div>
-    </div>
-  </nav>
+<header>
+    <h1>Plataformas de Desenvolvimento IoT</h1>
+    <nav>
+        <ul>
+            <li><a href="iot.html">IoT</a></li>
+            <li><a href="principal.html">Principais Funções</a></li>
+            <li><a href="pex.html">Exemplos</a></li>
+            <li><a href="linguagem.html">Linguagens</a></li>
+            <li><a href="desafio.html">Desafios</a></li>
+        </ul>
+    </nav>
+</header>
 
-  <main id="conteudo" class="wrapper">
-    <header id="intro">
-      <h1 class="title">Internet das Coisas (IoT)</h1>
-      <p class="subtitle">Visão objetiva para uso acadêmico: onde a IoT “mora”, como opera, linguagens e protocolos comuns, principais características, ferramentas do ecossistema e boas práticas.</p>
-    </header>
+<main>
 
-    <!-- Onde se hospeda a IoT -->
-    <section id="hospedagem">
-      <div class="section-title">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M4 10l8-6 8 6v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8z" stroke="currentColor" stroke-width="1.6"/><path d="M9 22V12h6v10" stroke="currentColor" stroke-width="1.6" opacity=".8"/></svg>
-        <h2>Onde se hospeda a IoT?</h2>
-      </div>
-      <div class="panel">
-        <p class="muted">Os componentes de IoT podem residir em diferentes camadas. A escolha depende de latência aceitável, custo, segurança, conectividade e volume de dados.</p>
-        <div class="grid cols-2" style="margin-top:14px">
-          <div class="card">
-            <h4>Borda (Edge)</h4>
-            <p>Processamento no próprio dispositivo ou no <em>gateway</em> local (ex.: ESP32, Raspberry Pi, microcontroladores, roteadores industriais). Minimiza latência e uso de rede.</p>
-          </div>
-          <div class="card">
-            <h4>Névoa (Fog)</h4>
-            <p>Camada intermediária entre a borda e a nuvem; agrega dados de vários nós próximos (ex.: <em>gateways</em> regionais) para pré-processar e orquestrar cargas.</p>
-          </div>
-          <div class="card">
-            <h4>Nuvem (Cloud)</h4>
-            <p>Serviços escaláveis para ingestão, processamento, armazenamento e análise (ex.: <strong>AWS IoT</strong>, <strong>Azure IoT</strong>). Ideal para integração com sistemas e IA.</p>
-          </div>
-          <div class="card">
-            <h4>Local/On‑premises</h4>
-            <p>Hospedagem em infraestrutura própria por requisitos de privacidade, custo de link ou operação offline (ex.: fábrica isolada, laboratório). Pode integrar-se à nuvem depois.</p>
-          </div>
-        </div>
-        <div class="callout" style="margin-top:16px">
-          <strong>Arquiteturas híbridas</strong>: na prática, combina-se borda + nuvem. Dados críticos ficam perto da fonte; históricos e IA pesada vão para a nuvem.
-        </div>
-      </div>
-    </section>
+<section id="iot" class="card">
+    <h2>IoT - Internet of Things</h2>
+    <img src="https://cdn.pixabay.com/photo/2018/05/14/19/28/internet-of-things-3404893_1280.jpg" alt="Imagem de IoT">
+    <p>A Internet das Coisas (IoT) refere-se à interconexão de dispositivos físicos, veículos, sensores e sistemas que coletam e trocam dados. A IoT transforma setores como saúde, agricultura, transporte e cidades inteligentes.</p>
+</section>
 
-    <!-- Como funciona -->
-    <section id="funciona">
-      <div class="section-title">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3 3" stroke="currentColor" stroke-width="1.6"/></svg>
-        <h2>Como funciona (visão não técnica)</h2>
-      </div>
-      <div class="panel">
-        <table aria-label="Fluxo simplificado de IoT">
-          <thead>
-            <tr>
-              <th>Etapa</th>
-              <th>Descrição</th>
-              <th>Exemplos</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>1. Dispositivos & Sensores</strong></td>
-              <td>Mediem variáveis do ambiente (temperatura, luz, vibração) e atuem sobre o mundo físico (motores, trancas).</td>
-              <td>ESP32, Arduino, sensores DHT22, relés, atuadores PWM.</td>
-            </tr>
-            <tr>
-              <td><strong>2. Conectividade</strong></td>
-              <td>Transporta dados até um ponto de agregação ou nuvem.</td>
-              <td>Wi‑Fi, Ethernet, Bluetooth Low Energy, Zigbee, LoRaWAN, 4G/5G, NB‑IoT.</td>
-            </tr>
-            <tr>
-              <td><strong>3. Protocolos</strong></td>
-              <td>Organizam a troca de mensagens entre dispositivos e aplicações.</td>
-              <td>MQTT, CoAP, HTTP/REST, WebSockets.</td>
-            </tr>
-            <tr>
-              <td><strong>4. Processamento</strong></td>
-              <td>Filtragem, agregação, regras e IA. Pode ocorrer na borda, em névoa ou na nuvem.</td>
-              <td>Alertas, detecção de anomalia, comando de retorno ao dispositivo.</td>
-            </tr>
-            <tr>
-              <td><strong>5. Aplicações</strong></td>
-              <td>Painéis, apps e integrações que exibem métricas e permitem controle.</td>
-              <td>Dashboards web, apps Android/iOS, integrações com ERPs.</td>
-            </tr>
-            <tr>
-              <td><strong>6. Segurança & Gestão</strong></td>
-              <td>Autenticação, criptografia, controle de acesso, <em>firmware</em> e atualizações remotas.</td>
-              <td>Certificados, TLS, atualização OTA, inventário de ativos.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
+<section id="funcoes" class="card">
+    <h2>Principais Funções de uma Plataforma IoT</h2>
+    <img src="https://cdn.pixabay.com/photo/2019/04/29/10/13/iot-4160381_1280.jpg" alt="Plataforma IoT">
+    <ul>
+        <li>Gerenciamento de dispositivos</li>
+        <li>Coleta e armazenamento de dados</li>
+        <li>Processamento em tempo real</li>
+        <li>Integração com nuvem e APIs</li>
+        <li>Segurança e criptografia</li>
+    </ul>
+</section>
 
-    <!-- Linguagens e Protocolos -->
-    <section id="linguagens">
-      <div class="section-title">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M4 7h16M4 12h10M4 17h16" stroke="currentColor" stroke-width="1.6"/></svg>
-        <h2>Linguagens, Protocolos e Conectividade</h2>
-      </div>
-      <div class="panel">
-        <div class="grid cols-3">
-          <div class="card">
-            <h4>Linguagens comuns</h4>
-            <ul class="clean">
-              <li><strong>C/C++</strong> — microcontroladores (Arduino, ESP‑IDF).</li>
-              <li><strong>MicroPython / CircuitPython</strong> — prototipagem rápida em placas compatíveis.</li>
-              <li><strong>Python</strong> — processamento em borda (Raspberry Pi) e serviços.</li>
-              <li><strong>JavaScript/Node.js</strong> — <em>gateways</em>, APIs e painéis web.</li>
-              <li><strong>Java</strong> e <strong>Kotlin</strong> — apps Android e serviços.</li>
-              <li><strong>Go</strong> e <strong>Rust</strong> — serviços de alto desempenho.</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h4>Protocolos de aplicação</h4>
-            <ul class="clean">
-              <li><strong>MQTT</strong> — leve, pub/sub, ideal para telemetria.</li>
-              <li><strong>CoAP</strong> — similar ao HTTP sobre UDP, eficiente em redes restritas.</li>
-              <li><strong>HTTP/REST</strong> e <strong>WebSockets</strong> — integração web e tempo real.</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h4>Redes e enlaces</h4>
-            <ul class="clean">
-              <li><strong>Wi‑Fi</strong> e <strong>Ethernet</strong> — alta taxa em ambientes locais.</li>
-              <li><strong>Bluetooth LE</strong> — baixo consumo e curta distância.</li>
-              <li><strong>Zigbee</strong> / <strong>Z‑Wave</strong> — automação residencial em malha.</li>
-              <li><strong>LoRaWAN</strong> — longas distâncias com baixo consumo.</li>
-              <li><strong>NB‑IoT</strong> / <strong>LTE‑M</strong> / <strong>5G</strong> — redes celulares para IoT.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
+<section id="exemplos" class="card">
+    <h2>Exemplos de Plataformas IoT</h2>
+    <img src="https://cdn.pixabay.com/photo/2021/08/11/02/15/cloud-6537318_1280.png" alt="Plataformas IoT">
+    <ul>
+        <li>AWS IoT Core</li>
+        <li>Google Cloud IoT</li>
+        <li>Microsoft Azure IoT Hub</li>
+        <li>IBM Watson IoT</li>
+        <li>ThingSpeak (MATLAB)</li>
+        <li>Node-RED</li>
+        <li>Blynk</li>
+    </ul>
+</section>
 
-    <!-- Características principais -->
-    <section id="caracteristicas">
-      <div class="section-title">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3" stroke="currentColor" stroke-width="1.6"/><path d="M8 12h8M12 8v8" stroke="currentColor" stroke-width="1.6"/></svg>
-        <h2>Características essenciais</h2>
-      </div>
-      <div class="panel">
-        <div class="kpi" aria-label="Indicadores de projeto">
-          <div class="stat">Baixo consumo de energia</div>
-          <div class="stat">Latência adequada ao caso de uso</div>
-          <div class="stat">Escalabilidade e observabilidade</div>
-          <div class="stat">Segurança por padrão</div>
-          <div class="stat">Atualização remota (OTA)</div>
-          <div class="stat">Interoperabilidade</div>
-        </div>
-        <div class="grid cols-2" style="margin-top:12px">
-          <div class="card">
-            <h4>Qualidade de serviço</h4>
-            <ul class="check">
-              <li>Operar com conectividade intermitente e filas de retransmissão.</li>
-              <li>Tratar dados fora de ordem e duplicados com idempotência.</li>
-              <li>Monitoramento: logs, métricas e alertas por dispositivo.</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h4>Segurança básica</h4>
-            <ul class="check">
-              <li>Autenticação forte (chaves, certificados por dispositivo).</li>
-              <li>Criptografia em trânsito (TLS) e, quando possível, em repouso.</li>
-              <li>Princípio do menor privilégio e rotatividade de credenciais.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
+<section id="linguagens" class="card">
+    <h2>Linguagens Mais Usadas</h2>
+    <img src="https://cdn.pixabay.com/photo/2017/06/10/07/18/coding-2389234_1280.jpg" alt="Linguagens de programação">
+    <ul>
+        <li>C e C++</li>
+        <li>Python</li>
+        <li>JavaScript / Node.js</li>
+        <li>Java</li>
+        <li>Go (Golang)</li>
+    </ul>
+</section>
 
-    <!-- Ferramentas do ecossistema -->
-    <section id="ferramentas">
-      <div class="section-title">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 3l2.5 5 5 .7-3.7 3.6.9 5.1L12 15l-4.7 2.4.9-5.1L4.5 8.7l5-.7L12 3z" stroke="currentColor" stroke-width="1.6"/></svg>
-        <h2>Ferramentas para criar soluções IoT</h2>
-      </div>
-      <div class="panel">
-        <div class="grid cols-3">
-          <div class="card">
-            <h4>Hardware e placas</h4>
-            <ul class="clean">
-              <li><strong>Arduino</strong> (variantes UNO, Nano, MKR).</li>
-              <li><strong>ESP32/ESP8266</strong> (Wi‑Fi/BLE integrados).</li>
-              <li><strong>Raspberry Pi</strong> (computação na borda).</li>
-              <li>Módulos de sensores (DHT, BMP, MPU, relés, etc.).</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h4>Desenvolvimento e teste</h4>
-            <ul class="clean">
-              <li><strong>Arduino IDE</strong>, <strong>PlatformIO</strong>, <strong>VS Code</strong>.</li>
-              <li><strong>Node‑RED</strong> (fluxos), <strong>Eclipse Mosquitto</strong> (broker MQTT).</li>
-              <li>Depuração e análise: <strong>Wireshark</strong>, <strong>Serial Monitor</strong>.</li>
-              <li>Simulação: <strong>HiveMQ</strong> ou <strong>EMQX</strong> (núvens de teste MQTT).</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h4>Plataformas e serviços</h4>
-            <ul class="clean">
-              <li><strong>AWS IoT Core</strong> (gerenciamento de dispositivos, regras, segurança).</li>
-              <li><strong>Azure IoT Hub</strong> (ingestão, gêmeos digitais, DPS).</li>
-              <li><strong>ThingsBoard</strong> (plataforma open‑source para dashboards e regras).</li>
-              <li><strong>balenaCloud</strong> / <strong>Mender</strong> (gerência e OTA para Linux embarcado).</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
+<section id="desafios" class="card">
+    <h2>Desafios da IoT</h2>
+    <img src="https://cdn.pixabay.com/photo/2018/01/10/11/06/technology-3075716_1280.jpg" alt="Desafios IoT">
+    <ul>
+        <li>Segurança e privacidade</li>
+        <li>Interoperabilidade</li>
+        <li>Escalabilidade</li>
+        <li>Consumo de energia</li>
+    </ul>
+</section>
 
-    <!-- Boas práticas e notas -->
-    <section id="notas">
-      <div class="section-title">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6 8h12M6 12h12M6 16h8" stroke="currentColor" stroke-width="1.6"/><rect x="3" y="4" width="18" height="16" rx="3" stroke="currentColor" stroke-width="1.6" opacity=".8"/></svg>
-        <h2>Boas práticas & notas importantes</h2>
-      </div>
-      <div class="panel">
-        <div class="grid cols-2">
-          <div class="card">
-            <h4>Conformidade e privacidade</h4>
-            <ul class="clean">
-              <li>Considere a <strong>LGPD</strong> ao coletar dados pessoais e de localização.</li>
-              <li>Implemente transparência: finalidade, retenção e consentimento.</li>
-              <li>Separe dados pessoais de telemetria técnica quando possível.</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h4>Segurança desde o início</h4>
-            <ul class="clean">
-              <li>Proteja credenciais em hardware (ex.: armazenamento seguro).</li>
-              <li>Faça <strong>OTA</strong> assinado digitalmente e com validação.</li>
-              <li>Revise riscos do <em>OWASP IoT Top 10</em> periodicamente.</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h4>Projeto sustentável</h4>
-            <ul class="clean">
-              <li>Dimensione baterias e ciclos de sono profundo (<em>deep sleep</em>).</li>
-              <li>Prefira atualizações diferenciais para reduzir tráfego e energia.</li>
-              <li>Documente inventário e ciclo de vida do dispositivo.</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h4>Curiosidades e tendências</h4>
-            <ul class="clean">
-              <li><strong>TinyML</strong>: IA embarcada em microcontroladores.</li>
-              <li><strong>Gêmeos digitais</strong>: modelos virtuais para operação e simulação.</li>
-              <li><strong>IPv6</strong> facilita endereçamento amplo e direto em IoT.</li>
-              <li>Certificação de radiofrequência pode exigir <strong>homologação Anatel</strong> no Brasil.</li>
-            </ul>
-          </div>
-        </div>
-        <div class="callout" style="margin-top:14px">
-          <strong>Dica prática</strong>: comece com um protótipo simples (sensor → MQTT → dashboard). Valide requisitos reais de latência, energia e segurança antes de escalar.
-        </div>
-      </div>
-    </section>
+</main>
 
-    <section>
-      <div class="panel">
-        <h3>Resumo</h3>
-        <p>A Internet das Coisas conecta objetos do mundo físico à internet para coletar dados, gerar insights e automatizar ações. A arquitetura pode ser distribuída entre borda, névoa e nuvem. Projetos robustos combinam protocolos leves (como MQTT), linguagens adequadas ao hardware e ferramentas de desenvolvimento, com segurança e governança desde o desenho inicial.</p>
-      </div>
-    </section>
+<footer>
+    <p>© 2025 IoT - Internet das Coisas. Todos os direitos reservados.</p>
+</footer>
 
-    <footer class="wrapper" aria-label="Rodapé">
-      <div class="footer-grid">
-        <div>Material didático – Curso Técnico em Informática | Senac</div>
-        <div>Este conteúdo pode ser usado como roteiro de apresentação em sala.</div>
-      </div>
-    </footer>
-  </main>
 </body>
 </html>

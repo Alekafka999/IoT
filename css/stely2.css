@@ -1,0 +1,115 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", Arial, sans-serif;
+}
+
+/* FUNDO GLITTER */
+body {
+    background: linear-gradient(135deg, #1b1f3b, #272f52, #3f4c77);
+    background-size: 300% 300%;
+    animation: gradientMove 10s ease infinite;
+    color: #e6e6e6;
+}
+
+/* Cabeçalho */
+header {
+    background: linear-gradient(90deg, #7b2ff7, #f107a3);
+    padding: 25px;
+    text-align: center;
+    color: white;
+    text-shadow: 0 0 10px #fff;
+    box-shadow: 0 0 20px #f107a3;
+    border-bottom: 2px solid rgba(255,255,255,0.3);
+}
+
+/* MENU */
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 15px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    background: rgba(255,255,255,0.1);
+    padding: 8px 15px;
+    border-radius: 8px;
+    backdrop-filter: blur(4px);
+    transition: 0.3s ease;
+}
+
+nav a:hover {
+    background: rgba(255,255,255,0.3);
+    box-shadow: 0 0 12px #f107a3;
+}
+
+/* ÁREA CENTRAL */
+main {
+    width: 90%;
+    max-width: 900px;
+    margin: 40px auto;
+}
+
+/* CARDS GLITTER */
+.card {
+    background: rgba(255,255,255,0.08);
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(255,255,255,0.15);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255,255,255,0.14);
+    transition: 0.4s ease;
+}
+
+/* EFEITO DE HOVER COM BRILHO */
+.card:hover {
+    box-shadow: 0 0 25px #7b2ff7, 0 0 45px #f107a3;
+    transform: translateY(-4px);
+}
+
+/* IMAGENS */
+.card img {
+    width: 100%;
+    border-radius: 12px;
+    margin: 15px 0;
+    box-shadow: 0 0 12px #f107a358;
+}
+
+/* TÍTULOS GLOW */
+.card h2 {
+    margin-bottom: 12px;
+    text-shadow: 0 0 10px #f107a3, 0 0 15px #7b2ff7;
+    color: #ffffff;
+}
+
+/* LISTAS */
+.card ul {
+    margin-left: 20px;
+    line-height: 1.8;
+}
+
+/* FOOTER */
+footer {
+    background: linear-gradient(90deg, #f107a3, #7b2ff7);
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 40px;
+    font-weight: bold;
+    text-shadow: 0 0 8px #fff;
+}
+
+/* ANIMAÇÃO DO FUNDO */
+@keyframes gradientMove {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+    100% { background-position: 0% 0%; }
+}
