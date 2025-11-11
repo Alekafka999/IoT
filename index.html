@@ -8,21 +8,14 @@
 </head>
 <body>
 
-<header>
+<header class="header-with-image">
     <h1>Plataformas de Desenvolvimento IoT</h1>
-    <nav>
-
-        <img src="images/city.jpg" alt="Cidade Interligada pela IoT" class="icon">
-=======
-        <img src="" alt="">
->>>>>>> 9f65db9b67be0a4f45ce7c878e8db7a408a65f3c
-        <ul>
-            <li><a href="#iot">IoT</a></li>
-            <li><a href="#funcoes">Principais Funções</a></li>
-            <li><a href="#exemplos">Exemplos</a></li>
-            <li><a href="#linguagens">Linguagens</a></li>
-            <li><a href="#desafios">Desafios</a></li>
-        </ul>
+    <nav class="nav-spread">
+        <a href="#iot">IoT</a>
+        <a href="#funcoes">Principais Funções</a>
+        <a href="#exemplos">Exemplos</a>
+        <a href="#linguagens">Linguagens</a>
+        <a href="#desafios">Desafios</a>
     </nav>
 </header>
 
@@ -34,59 +27,93 @@
 </section>
 
 <section id="funcoes" class="card">
-    <h2>Principais Funções de uma Plataforma IoT</h2>
-    <img src="images/plataformas.png" alt="Plataforma IoT">
-    <ul>
-        <li>Gerenciamento de dispositivos</li>
-        <li>Coleta e armazenamento de dados</li>
-        <li>Processamento em tempo real</li>
-        <li>Integração com nuvem e APIs</li>
-        <li>Segurança e criptografia</li>
-    </ul>
+    <div class="card-content">
+        <img src="images/conexao.png" alt="Plataforma IoT" class="clickable-img" onclick="openModal(this)">
+        <div class="text-content">
+            <h2>Principais Funções de uma Plataforma IoT</h2>
+            <ol>
+                <li>Gerenciamento de dispositivos</li>
+                <li>Coleta e armazenamento de dados</li>
+                <li>Processamento em tempo real</li>
+                <li>Integração com nuvem e APIs</li>
+                <li>Segurança e criptografia</li>
+            </ol>
+        </div>
+    </div>
 </section>
 
 <section id="exemplos" class="card">
-    <h2>Exemplos de Plataformas IoT</h2>
-    <img src="images/plataformas.png" alt="Plataformas IoT">
-    <ul>
-        <li>AWS IoT Core</li>
-        <li>Google Cloud IoT</li>
-        <li>Microsoft Azure IoT Hub</li>
-        <li>IBM Watson IoT</li>
-        <li>ThingSpeak (MATLAB)</li>
-        <li>Node-RED</li>
-        <li>Blynk</li>
-    </ul>
+    <div class="card-content">
+        <img src="images/plataformas.png" alt="Plataformas IoT" class="clickable-img" onclick="openModal(this)">
+        <div class="text-content">
+            <h2>Exemplos de Plataformas IoT</h2>
+            <ol>
+                <li>AWS IoT Core</li>
+                <li>Google Cloud IoT</li>
+                <li>Microsoft Azure IoT Hub</li>
+                <li>IBM Watson IoT</li>
+                <li>ThingSpeak (MATLAB)</li>
+                <li>Node-RED</li>
+                <li>Blynk</li>
+            </ol>
+        </div>
+    </div>
 </section>
 
 <section id="linguagens" class="card">
-    <h2>Linguagens Mais Usadas</h2>
-    <img src="images/linguagem.png" alt="Linguagens de programação">
-    <ul>
-        <li>C e C++</li>
-        <li>Python</li>
-        <li>JavaScript / Node.js</li>
-        <li>Java</li>
-        <li>Go (Golang)</li>
-    </ul>
+    <div class="card-content">
+        <img src="images/linguagem.png" alt="Linguagens de programação" class="clickable-img" onclick="openModal(this)">
+        <div class="text-content">
+            <h2>Linguagens Mais Usadas</h2>
+            <ol>
+                <li>C e C++</li>
+                <li>Python</li>
+                <li>JavaScript / Node.js</li>
+                <li>Java</li>
+                <li>Go (Golang)</li>
+            </ol>
+        </div>
+    </div>
 </section>
 
 <section id="desafios" class="card">
-    <h2>Desafios da IoT</h2>
-    <img src="images/desafios.png" alt="Desafios IoT">
-    <ul>
-        <li>Segurança e privacidade</li>
-        <li>Interoperabilidade</li>
-        <li>Escalabilidade</li>
-        <li>Consumo de energia</li>
-    </ul>
+    <div class="card-content">
+        <img src="images/desafios.png" alt="Desafios IoT" class="clickable-img" onclick="openModal(this)">
+        <div class="text-content">
+            <h2>Desafios da IoT</h2>
+            <ol>
+                <li>Segurança e privacidade</li>
+                <li>Interoperabilidade</li>
+                <li>Escalabilidade</li>
+                <li>Consumo de energia</li>
+            </ol>
+        </div>
+    </div>
 </section>
 
 </main>
 
+<!-- Modal Pop-up -->
+<div id="imageModal" class="modal" onclick="closeModal()">
+    <img id="modalImage" class="modal-content">
+</div>
+
 <footer>
     <p>© 2025 IoT - Internet das Coisas. Todos os direitos reservados.</p>
 </footer>
+
+<script>
+function openModal(img) {
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    modal.style.display = 'block';
+    modalImg.src = img.src;
+}
+
+function closeModal() {
+    document.getElementById('imageModal').style.display = 'none';
+}
+</script>
 
 </body>
 </html>
